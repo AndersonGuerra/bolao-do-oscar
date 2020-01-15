@@ -51,10 +51,15 @@ export default {
       .catch((error) => {
           console.log(error)
       });
+      // .then(()=>{
+      //   console.log('erro')
+      //   this.$router.push({ name: "Home" });
+      // })
     },
     createUser(){
       firebase.auth().createUserWithEmailAndPassword(this.form.email, this.form.password)
         .then((result) => {
+          // adiciona o displayName do usuário no estado do vuex
           this.$store.dispatch("auth/setUserName", this.form.displayName)
           // atualiza o usuário criado com o seu displayName
           return result.user.updateProfile({displayName: this.form.displayName})

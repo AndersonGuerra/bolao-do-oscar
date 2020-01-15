@@ -20,8 +20,10 @@ new Vue({
           store.dispatch('auth/setUserName', user.displayName)
         }
         store.dispatch('auth/setUserData', user)
+        router.push({name: "Home"})
       }else{
         store.commit("auth/removeUser")
+        router.push({name: "Login"})
       }
     });
   },

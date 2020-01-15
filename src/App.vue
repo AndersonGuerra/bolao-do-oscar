@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-toolbar dense>
+    <v-toolbar flat dense>
       <v-toolbar-title>Bolão do Oscar - {{this.hasUser}}</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn elevation="0" v-if="this.hasUser" @click="this.logout">Sair</v-btn>

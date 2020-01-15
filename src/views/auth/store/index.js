@@ -4,6 +4,7 @@ export default {
     namespaced: true,
     state: {
         user: undefined,
+        loading: false,
     },
     mutations: {
         setUserName(state, payload) {
@@ -28,6 +29,9 @@ export default {
         },
         removeUser(state) {
             state.user = undefined
+        },
+        changeLoading(state) {
+            state.loading = !state.loading
         }
     },
     actions: {
@@ -41,6 +45,7 @@ export default {
     getters: {
         hasUser: ({user}) => !!user,
         userData: ({user}) => user,
+        loading: ({loading}) => loading
     },
     modules: {
         
