@@ -21,3 +21,4 @@ yarn-error.log*
 *.sw?
 
 src/firebase/index.js
+src/config/theMovieDBtoken.js

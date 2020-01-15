@@ -4,6 +4,7 @@ export default {
     namespaced: true,
     state: {
         user: undefined,
+        superUser: false,
         loading: false,
     },
     mutations: {
@@ -27,8 +28,12 @@ export default {
                 state.user.uid = payload.uid
             }
         },
+        setSuper(state){
+            state.superUser = true
+        },
         removeUser(state) {
             state.user = undefined
+            state.superUser = false
         },
         changeLoading(state) {
             state.loading = !state.loading
@@ -40,12 +45,16 @@ export default {
         },
         setUserData: ({commit}, payload) => {
             commit('setUserData', payload);
+        },
+        setSuper: ({commit}) => {
+            commit("setSuper")
         }
     },
     getters: {
         hasUser: ({user}) => !!user,
         userData: ({user}) => user,
-        loading: ({loading}) => loading
+        loading: ({loading}) => loading,
+        super: ({superUser}) => superUser
     },
     modules: {
         

@@ -13,9 +13,25 @@ new Vue({
   vuetify,
   render: h => h(App),
   created(){
-    firebase.auth().onAuthStateChanged(function(user) {
+    let db = firebase.firestore()
+    firebase.auth().onAuthStateChanged(async (user) => {
       if (user) {
+        db.collection("categories").onSnapshot((querySnapshot)=>{
+          let categories = []
+          querySnapshot.forEach((category)=>{
+            let categoryData = category.data()
+            categories.push(categoryData)
+          })
+          store.dispatch("movies/setCategories", categories)
+        })
+
         // User is signed in.
+        let superUser = await db.collection("users").doc(user.uid).get();
+        if (superUser.exists) {
+          if (superUser.data().super != undefined) {
+            store.dispatch("auth/setSuper")
+          }
+        }
         if (user.displayName != undefined){
           store.dispatch('auth/setUserName', user.displayName)
         }

@@ -1,0 +1,1 @@
+export default '?api_key=<your_api_token>'
