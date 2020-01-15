@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <v-row></v-row>
+    <v-row><h1>card</h1></v-row>
   </v-content>
 </template>
 
