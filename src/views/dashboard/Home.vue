@@ -1,7 +1,7 @@
 <template>
-  <v-content>
-    <v-row><h1>card</h1></v-row>
-  </v-content>
+  <v-container>
+    <h1>testeasa</h1>
+  </v-container>
 </template>
 
 <script>
