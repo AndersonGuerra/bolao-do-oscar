@@ -2,11 +2,27 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import vuetify from './plugins/vuetify';
+import firebase from './firebase'
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
-  render: h => h(App)
+  vuetify,
+  render: h => h(App),
+  created(){
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        if (user.displayName != undefined){
+          store.dispatch('auth/setUserName', user.displayName)
+        }
+        store.dispatch('auth/setUserData', user)
+      }else{
+        store.commit("auth/removeUser")
+      }
+    });
+  },
 }).$mount('#app')
