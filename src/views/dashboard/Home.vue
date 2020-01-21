@@ -41,12 +41,12 @@
     <div v-if="this.super && tabMenu == 1"></div>
     <div v-if="(tabMenu == 0 && !this.super) || (tabMenu == 2 && this.super)">
       <v-list>
-        <div v-for="category in categories" :key="category.name">
+        <div class="mb-3 mr-2 ml-2" v-for="category in categories" :key="category.name">
           <v-row>
             <h3>{{category.name}}</h3>
           </v-row>
           <v-row>
-            <div class="ml-3 mb-3" v-for="movie in movies" :key="movie.title">
+            <div v-for="movie in movies" :key="movie.title">
               <v-card
                 :color="votedMovies.filter((mov)=>mov.category == category.name 
                   && mov.title == movie.title).length>0
