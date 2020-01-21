@@ -40,27 +40,27 @@
     </div>
     <div v-if="this.super && tabMenu == 1"></div>
     <div v-if="(tabMenu == 0 && !this.super) || (tabMenu == 2 && this.super)">
-      <v-list>
-        <div class="mb-3 mr-2 ml-2" v-for="category in categories" :key="category.name">
-          <v-row>
-            <h3>{{category.name}}</h3>
-          </v-row>
-          <v-row>
-            <div v-for="movie in movies" :key="movie.title">
-              <v-card
-                :color="votedMovies.filter((mov)=>mov.category == category.name 
-                  && mov.title == movie.title).length>0
-                   ? 'blue' : 'white'"
-                @click="voteOnMovie(category.name, movie.title)"
-                v-if="movie.categories.filter(cat=>(cat.name === category.name)).length > 0">
-                <v-container>
-                  <v-img :src="movie.poster" width="125"></v-img>
-                </v-container>
-              </v-card>
-            </div>
-          </v-row>
-        </div>
-      </v-list>
+      <v-container>
+      <div class="mb-3 mr-2 ml-2" v-for="category in categories" :key="category.name">
+        <v-row>
+          <h3>{{category.name}}</h3>
+        </v-row>
+        <v-row>
+          <div v-for="movie in movies" :key="movie.title">
+            <v-card
+              :color="votedMovies.filter((mov)=>mov.category == category.name 
+                && mov.title == movie.title).length>0
+                  ? 'blue' : 'grey'"
+              @click="voteOnMovie(category.name, movie.title)"
+              v-if="movie.categories.filter(cat=>(cat.name === category.name)).length > 0">
+              <v-container>
+                <v-img :src="movie.poster" width="125"></v-img>
+              </v-container>
+            </v-card>
+          </div>
+        </v-row>
+      </div>
+      </v-container>
     </div>
     <v-dialog
       v-model="dialogCreateMovie"
