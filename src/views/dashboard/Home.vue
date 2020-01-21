@@ -189,7 +189,7 @@ export default {
         }
         this.movieData = movieData
         this.dialogCreateMovie = true;
-      }).catch(er=>console.log(er))
+      })
     },
     async createMovie() {
       let categories = []
