@@ -13,10 +13,10 @@
       <v-col>
         <v-card>
           <v-container>
-            <v-text-field filled v-model="form.displayName" label="Nome"></v-text-field>
-            <v-text-field filled v-model="form.email" label="email"></v-text-field>
-            <v-text-field filled v-model="form.password" type="password" label="Senha"></v-text-field>
-            <v-text-field filled v-model="form.confirmPassword" type="password" label="Confirmar senha"></v-text-field>
+            <v-text-field filled v-model="formNewUser.displayName" label="Nome"></v-text-field>
+            <v-text-field filled v-model="formNewUser.email" label="email"></v-text-field>
+            <v-text-field filled v-model="formNewUser.password" type="password" label="Senha"></v-text-field>
+            <v-text-field filled v-model="formNewUser.confirmPassword" type="password" label="Confirmar senha"></v-text-field>
             <v-btn @click="createUser">Criar conta</v-btn>
           </v-container>
         </v-card>
@@ -32,10 +32,13 @@ import { mapGetters } from 'vuex'
 export default {
   data: () => ({
     form: {
-      displayName: 'Alfredoaldo',
-      email: "a@a.com",
-      password: "123@mudar",
-      confirmPassword: '',
+      email: "",
+      password: "",
+    },
+    formNewUser: {
+      displayName: '',
+      email: "",
+      password: "",
     },
     confirmPasswordRule: [
       value => !!value || 'Campo necessário.',
@@ -57,12 +60,12 @@ export default {
       // })
     },
     createUser(){
-      firebase.auth().createUserWithEmailAndPassword(this.form.email, this.form.password)
+      firebase.auth().createUserWithEmailAndPassword(this.formNewUser.email, this.formNewUser.password)
         .then((result) => {
           // adiciona o displayName do usuário no estado do vuex
-          this.$store.dispatch("auth/setUserName", this.form.displayName)
+          this.$store.dispatch("auth/setUserName", this.formNewUser.displayName)
           // atualiza o usuário criado com o seu displayName
-          return result.user.updateProfile({displayName: this.form.displayName})
+          return result.user.updateProfile({displayName: this.formNewUser.displayName})
         })
         .catch((error) =>{
           console.log(error.message)
