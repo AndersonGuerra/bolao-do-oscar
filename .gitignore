@@ -22,3 +22,6 @@ yarn-error.log*
 
 src/firebase/index.js
 src/config/theMovieDBtoken.js
+.firebase
+.firebaserc
+firebase.json

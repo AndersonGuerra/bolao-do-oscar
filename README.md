@@ -10,3 +10,6 @@ Um projeto em vuejs para simular um bolão do oscar.
 
 ## Licença
 MIT
+
+## Demo
+[Live Demo](https://bolao-do-oscar.web.app)
