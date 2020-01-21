@@ -1,24 +1,12 @@
-# bolao-do-oscar
+# Bolão do Oscar
 
-## Project setup
-```
-npm install
-```
+Um projeto em vuejs para simular um bolão do oscar.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Como utilizar
+* É necessário ter um projeto no firebase e colocar suas configurações dentro do arquivo src/firebase/index.js  
+* É necessário ter uma conta no The Movie DataBase e inserir sua API_KEY em src/config/theMovieDBtoken.js  
+* npm install
+* npm run serve
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Licença
+MIT
