@@ -35,8 +35,8 @@ export default {
             state.user = undefined
             state.superUser = false
         },
-        changeLoading(state) {
-            state.loading = !state.loading
+        changeLoading(state, payload) {
+            state.loading = payload
         }
     },
     actions: {
@@ -48,6 +48,9 @@ export default {
         },
         setSuper: ({commit}) => {
             commit("setSuper")
+        },
+        changeLoading: ({commit}, payload) =>{
+            commit("changeLoading", payload)
         }
     },
     getters: {

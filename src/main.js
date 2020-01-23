@@ -20,22 +20,22 @@ firebase.auth().onAuthStateChanged(async (user) => {
   }).$mount('#app')
   if (user) {
     // User is signed in.
-    db.collection("votes").doc(user.uid).onSnapshot((querySnapshot)=>{
-      if (querySnapshot.data() != undefined){
-        store.commit("movies/setUserVotes", querySnapshot.data())
-      }
-    })
+    store.dispatch('auth/setUserData', user)
     let superUser = await db.collection("users").doc(user.uid).get();
     if (superUser.exists) {
       if (superUser.data().super != undefined) {
         store.dispatch("auth/setSuper")
       }
     }
+    router.push({name: "Home"})
+    db.collection("votes").doc(user.uid).onSnapshot((querySnapshot)=>{
+      if (querySnapshot.data() != undefined){
+        store.commit("movies/setUserVotes", querySnapshot.data())
+      }
+    })
     if (user.displayName != undefined){
       store.dispatch('auth/setUserName', user.displayName)
     }
-    store.dispatch('auth/setUserData', user)
-    router.push({name: "Home"})
   }else{
     store.commit("auth/removeUser")
     router.push({name: "Login"})
